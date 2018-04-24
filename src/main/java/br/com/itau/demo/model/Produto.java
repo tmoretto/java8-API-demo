@@ -2,6 +2,7 @@ package br.com.itau.demo.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -11,6 +12,7 @@ public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name = "codigo_barras")
  	private String codigoBarras;
 
     private String nome;
