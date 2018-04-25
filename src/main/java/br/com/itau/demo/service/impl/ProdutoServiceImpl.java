@@ -27,4 +27,8 @@ public class ProdutoServiceImpl implements ProdutoService {
 		return repository.findOneProdutoByCodigoBarras(codigoBarras);
 	}
 
+	public void excluirPorCodigoDeBarras(String codigoBarras) {
+		repository.deleteById(codigoBarras);
+	}
+
 }
