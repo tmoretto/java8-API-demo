@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,4 +43,13 @@ public class ProdutoServiceTest {
 		assertThat(todosProdutos.size()).isEqualTo(1);
 	}
 
+	@Test
+	@Sql({ "classpath:insert_produtos.sql" })
+	@Sql(scripts = "classpath:limpa_dados.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+	public void deveRetornarProdutoPorCodigoDeBarrasTest() {
+		String codigoBarras = "0000078906938";
+		Produto produto = service.obterPorCodigoDeBarras(codigoBarras);
+		assertThat(produto).isNotNull();
+		assertThat(produto.getCodigoBarras()).isEqualTo(codigoBarras);
+	}
 }
