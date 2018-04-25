@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,7 +39,7 @@ public class ProdutoController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<ProdutoDTO> incluir(@RequestBody Produto novoProduto, HttpServletResponse response) {
+	public ResponseEntity<ProdutoDTO> incluir(@Valid @RequestBody Produto novoProduto, HttpServletResponse response) {
 		Produto produto = service.incluir(novoProduto);
 		
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{codigoBarras}")

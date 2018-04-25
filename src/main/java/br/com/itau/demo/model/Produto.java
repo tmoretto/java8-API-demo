@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Produto implements Serializable {
@@ -12,9 +13,11 @@ public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@NotNull
 	@Column(name = "codigo_barras")
  	private String codigoBarras;
-
+	
+	@NotNull
     private String nome;
     
     public Produto() {
