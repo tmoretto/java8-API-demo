@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.itau.demo.model.Produto;
-import br.com.itau.demo.repository.ProdutoRepository;
+import br.com.itau.demo.service.ProdutoService;
 
 @RestController
 @RequestMapping("/api/produtos")
 public class ProdutoController {
 
 	@Autowired
-	private ProdutoRepository service;
+	private ProdutoService service;
 
 	@GetMapping
 	public ResponseEntity<List<Produto>> obterTodos() {
-		List<Produto> produtos = service.findAll();
+		List<Produto> produtos = service.obterTodos();
 		if (produtos.isEmpty()) {
 			return new ResponseEntity<List<Produto>>(HttpStatus.NO_CONTENT);
 		}
