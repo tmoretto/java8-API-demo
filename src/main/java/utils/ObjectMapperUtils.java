@@ -18,6 +18,9 @@ public class ObjectMapperUtils {
 	}
 
 	public static <D, T> D map(final T entity, Class<D> outClass) {
+		if (entity == null) {
+			return null;
+		}
 		return modelMapper.map(entity, outClass);
 	}
 

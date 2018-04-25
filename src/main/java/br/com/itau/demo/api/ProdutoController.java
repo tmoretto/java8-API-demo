@@ -47,5 +47,14 @@ public class ProdutoController {
 		
 		return ResponseEntity.created(uri).body(ObjectMapperUtils.map(produto, ProdutoDTO.class));
 	}
+	
+	@GetMapping("/{codigoBarras}")
+	public ResponseEntity<ProdutoDTO> obterPorCodigoDeBarras(@PathVariable String codigoBarras) {
+		ProdutoDTO produtoDTO = ObjectMapperUtils.map(service.obterPorCodigoDeBarras(codigoBarras), ProdutoDTO.class);
+		if (produtoDTO == null) {
+			return new ResponseEntity<ProdutoDTO>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<ProdutoDTO>(produtoDTO, HttpStatus.OK);
+	}
 
 }
