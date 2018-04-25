@@ -8,4 +8,6 @@ public interface ProdutoService {
 
 	List<Produto> obterTodos();
 
+	Produto incluir(Produto novoProduto);
+
 }

@@ -19,4 +19,8 @@ public class ProdutoServiceImpl implements ProdutoService {
         return repository.findAll();
     }
 
+	public Produto incluir(Produto novoProduto) {
+		return repository.save(novoProduto);
+	}
+
 }
