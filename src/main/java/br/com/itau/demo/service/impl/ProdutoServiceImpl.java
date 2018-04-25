@@ -23,4 +23,8 @@ public class ProdutoServiceImpl implements ProdutoService {
 		return repository.save(novoProduto);
 	}
 
+	public Produto obterPorCodigoDeBarras(String codigoBarras) {
+		return repository.findOneProdutoByCodigoBarras(codigoBarras);
+	}
+
 }

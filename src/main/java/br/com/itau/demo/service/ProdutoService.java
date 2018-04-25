@@ -10,4 +10,6 @@ public interface ProdutoService {
 
 	Produto incluir(Produto novoProduto);
 
+	Produto obterPorCodigoDeBarras(String codigoBarras);
+
 }

@@ -6,4 +6,6 @@ import br.com.itau.demo.model.Produto;
 
 public interface ProdutoRepository extends JpaRepository<Produto, String> {
 
+	Produto findOneProdutoByCodigoBarras(String codigoBarras);
+	
 }
