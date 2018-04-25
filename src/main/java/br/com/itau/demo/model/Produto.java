@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -20,6 +21,9 @@ public class Produto implements Serializable {
 	@NotNull
     private String nome;
     
+	@Transient
+	private Integer quantidade;
+	
     public Produto() {
 		super();
     }
@@ -28,6 +32,13 @@ public class Produto implements Serializable {
 		super();
 		this.codigoBarras = codigoBarras;
 		this.nome = nome;
+	}
+	
+	public Produto(String codigoBarras, String nome, Integer quantidade) {
+		super();
+		this.codigoBarras = codigoBarras;
+		this.nome = nome;
+		this.quantidade = quantidade;
 	}
 
 	public String getCodigoBarras() {
@@ -46,6 +57,14 @@ public class Produto implements Serializable {
 		this.nome = nome;
 	}
 	
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
