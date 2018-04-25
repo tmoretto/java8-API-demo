@@ -20,8 +20,7 @@ import br.com.itau.demo.service.CotacaoService;
 @Service
 public class CotacaoServiceImpl implements CotacaoService {
 
-	//private final String cotacaoUrl = "https://demo-prices.herokuapp.com/api";
-	private final String cotacaoUrl = "https://egf1amcv33.execute-api.us-east-1.amazonaws.com/dev/produto/";	
+	private final String cotacaoUrl = "https://demo-prices.herokuapp.com/api";
 	private RestTemplate restTemplate = new RestTemplate();
 
 	public CotacaoBO realizarCotacaoDeProdutos(List<Produto> produtosSelecionados) {
