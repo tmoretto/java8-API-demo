@@ -34,7 +34,7 @@ public class ProdutoServiceTest {
 	@Test
 	@Sql(scripts = "classpath:limpa_dados.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 	public void deveIncluirUmNovoProdutoTest() {
-		Produto novoProduto = service.incluir(new Produto("7891048050262", "GELATINA DR.OETKER MORANGO"));
+		Produto novoProduto = service.salvar(new Produto("7891048050262", "GELATINA DR.OETKER MORANGO"));
 		assertThat(novoProduto).isNotNull();
 
 		List<Produto> todosProdutos = service.obterTodos();

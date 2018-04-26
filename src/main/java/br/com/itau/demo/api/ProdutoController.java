@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -42,13 +43,19 @@ public class ProdutoController {
 	
 	@PostMapping
 	public ResponseEntity<ProdutoDTO> incluir(@Valid @RequestBody Produto novoProduto, HttpServletResponse response) {
-		Produto produto = service.incluir(novoProduto);
+		Produto produto = service.salvar(novoProduto);
 		
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{codigoBarras}")
 				.buildAndExpand(produto.getCodigoBarras()).toUri();
 		response.setHeader("Location", uri.toASCIIString());
 		
 		return ResponseEntity.created(uri).body(ObjectMapperUtils.map(produto, ProdutoDTO.class));
+	}
+	
+	@PutMapping("/{codigoBarras}")
+	public ResponseEntity<ProdutoDTO> atualizar(@PathVariable String codigoBarras, @Valid @RequestBody Produto produto) {
+		ProdutoDTO produtoDTO = ObjectMapperUtils.map(service.atualizar(codigoBarras, produto), ProdutoDTO.class);
+		return new ResponseEntity<ProdutoDTO>(produtoDTO, HttpStatus.OK);
 	}
 	
 	@GetMapping("/{codigoBarras}")
