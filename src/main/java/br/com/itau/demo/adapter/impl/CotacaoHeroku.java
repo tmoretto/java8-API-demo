@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import br.com.itau.demo.adapter.CotacaoAdapter;
 import br.com.itau.demo.bo.CotacaoBO;
 import br.com.itau.demo.bo.CotacaoPorFornecedorBO;
+import br.com.itau.demo.bo.ProdutoBO;
 import br.com.itau.demo.bo.ProdutoCotadoBO;
 import br.com.itau.demo.bo.RetornoCotacaoFornecedorBO;
 import br.com.itau.demo.model.Fornecedor;
@@ -20,10 +21,11 @@ import br.com.itau.demo.model.Produto;
 @Service
 public class CotacaoHeroku implements CotacaoAdapter {
 
-	private final String cotacaoUrl = "https://demo-prices.herokuapp.com/api";
+	//private final String cotacaoUrl = "https://demo-prices.herokuapp.com/api/";
+	private final String cotacaoUrl = "https://demo-prices.herokuapp.com/api/precos/";
 	private RestTemplate restTemplate = new RestTemplate();
 
-	public CotacaoBO realizaCotacao(List<Produto> produtosSelecionados) {
+	public CotacaoBO realizarCotacaoDeProdutos(List<Produto> produtosSelecionados) {
 		CotacaoBO cotacao = new CotacaoBO();
 		
 		produtosSelecionados.stream()
@@ -37,7 +39,7 @@ public class CotacaoHeroku implements CotacaoAdapter {
 	}
 
 	private ProdutoCotadoBO cotarProduto(Produto produto) {
-		ProdutoCotadoBO produtoCotado = new ProdutoCotadoBO(produto, produto.getQuantidade());
+		ProdutoCotadoBO produtoCotado = new ProdutoCotadoBO(new ProdutoBO(produto.getCodigoBarras()), produto.getQuantidade());
 		
 		List<CotacaoPorFornecedorBO> cotacaoDeFornecedoresParaProduto = buscarCotacaoDeFornecedoresParaProduto(produto);
 		cotacaoDeFornecedoresParaProduto.forEach(cotacao -> {

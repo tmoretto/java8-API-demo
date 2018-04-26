@@ -3,8 +3,6 @@ package br.com.itau.demo.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -13,20 +11,9 @@ public class Fornecedor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	
 	private String cnpj;
 	
-	private String nome;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	private String razaoSocial;
 	
 	public String getCnpj() {
 		return cnpj;
@@ -36,33 +23,28 @@ public class Fornecedor implements Serializable {
 		this.cnpj = cnpj;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getRazaoSocial() {
+		return razaoSocial;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setRazaoSocial(String razaoSocial) {
+		this.razaoSocial = razaoSocial;
 	}
-	
+
 	public Fornecedor() {
 	}
 	
-	public Fornecedor(String cnpj, String nome) {
+	public Fornecedor(String cnpj, String razaoSocial) {
 		super();
 		this.cnpj = cnpj;
-		this.nome = nome;
-	}
-
-	@Override
-	public String toString() {
-		return "Fornecedor [id=" + id + ", cnpj=" + cnpj + ", nome=" + nome + "]";
+		this.razaoSocial = razaoSocial;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((cnpj == null) ? 0 : cnpj.hashCode());
 		return result;
 	}
 
@@ -75,13 +57,12 @@ public class Fornecedor implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Fornecedor other = (Fornecedor) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (cnpj == null) {
+			if (other.cnpj != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!cnpj.equals(other.cnpj))
 			return false;
 		return true;
 	}
-	
 	
 }

@@ -3,25 +3,23 @@ package br.com.itau.demo.bo;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.itau.demo.model.Produto;
-
 public class ProdutoCotadoBO {
 
-	private Produto produto;
+	private ProdutoBO produto;
 	private Integer quantidadeSolicitada;
 	private List<RetornoCotacaoFornecedorBO> retornoCotacao = new ArrayList<>();
 
-	public ProdutoCotadoBO(Produto produto, Integer quantidadeSolicitada) {
+	public ProdutoCotadoBO(ProdutoBO produto, Integer quantidadeSolicitada) {
 		super();
 		this.produto = produto;
 		this.quantidadeSolicitada = quantidadeSolicitada;
 	}
 
-	public Produto getProduto() {
+	public ProdutoBO getProduto() {
 		return produto;
 	}
 
-	public void setProduto(Produto produto) {
+	public void setProduto(ProdutoBO produto) {
 		this.produto = produto;
 	}
 
@@ -43,7 +41,8 @@ public class ProdutoCotadoBO {
 
 	public RetornoCotacaoFornecedorBO buscarMenorPrecoPorRetorno() {
 		return this.retornoCotacao.stream()
-				.filter(retorno -> retorno.getMenorPreco() != null)			
+				.filter(retorno -> retorno.getMenorPreco() != null)
+				.distinct()
 				.sorted()
 				.findFirst()
 				.orElse(null);

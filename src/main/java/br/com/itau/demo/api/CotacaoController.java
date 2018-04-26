@@ -12,25 +12,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.itau.demo.bo.CotacaoPorFornecedorBO;
+import br.com.itau.demo.adapter.CotacaoAdapter;
+import br.com.itau.demo.bo.CotacaoBO;
 import br.com.itau.demo.model.Produto;
-import br.com.itau.demo.service.CotacaoService;
 
 @RestController
 @RequestMapping("/api/cotacao")
 public class CotacaoController {
 
 	@Autowired
-	private CotacaoService service;
+	private CotacaoAdapter adapter;
 
 	@PostMapping
-	public  ResponseEntity<List<CotacaoPorFornecedorBO>> cotar(@RequestBody Produto produto, HttpServletResponse response) {
-		List<CotacaoPorFornecedorBO> cotacao = service.buscarCotacaoDeFornecedoresParaProduto(produto);
-		
-		if (cotacao.isEmpty()) {
-			return new ResponseEntity<List<CotacaoPorFornecedorBO>>(HttpStatus.NO_CONTENT);
+	public  ResponseEntity<CotacaoBO> cotar(@RequestBody List<Produto> produtos, HttpServletResponse response) {
+		CotacaoBO cotacao = adapter.realizarCotacaoDeProdutos(produtos);
+		if (cotacao == null) {
+			return new ResponseEntity<CotacaoBO>(HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<List<CotacaoPorFornecedorBO>>(cotacao, HttpStatus.OK);
+		return new ResponseEntity<CotacaoBO>(cotacao, HttpStatus.OK);
 	}
 
 }

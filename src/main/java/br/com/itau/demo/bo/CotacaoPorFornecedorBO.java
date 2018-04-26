@@ -36,7 +36,7 @@ public class CotacaoPorFornecedorBO {
 
 	public BigDecimal getMenorPrecoPorQuantidadeSolicitada(Integer quantidadeSolicitada) {
 		return this.precos.stream()
-				.filter(precoQtde -> quantidadeSolicitada >= precoQtde.getQuantidade_minima())			
+				.filter(precoQtde -> quantidadeSolicitada >= precoQtde.getQuantidadeMinima())			
 				.sorted()
 				.findFirst()
 				.map(preco -> preco.getPreco())

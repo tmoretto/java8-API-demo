@@ -7,6 +7,6 @@ import br.com.itau.demo.model.Produto;
 
 public interface CotacaoAdapter {
 
-	CotacaoBO realizaCotacao(List<Produto> produtos);
-	
+	public CotacaoBO realizarCotacaoDeProdutos(List<Produto> produtosSelecionados);
+
 }

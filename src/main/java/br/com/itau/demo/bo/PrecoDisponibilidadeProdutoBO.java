@@ -4,15 +4,15 @@ import java.math.BigDecimal;
 
 public class PrecoDisponibilidadeProdutoBO implements Comparable<PrecoDisponibilidadeProdutoBO> {
 
-	private Integer quantidade_minima;
+	private Integer quantidadeMinima;
 	private BigDecimal preco;
 
-	public Integer getQuantidade_minima() {
-		return quantidade_minima;
+	public Integer getQuantidadeMinima() {
+		return quantidadeMinima;
 	}
 
-	public void setQuantidade_minima(Integer quantidade_minima) {
-		this.quantidade_minima = quantidade_minima;
+	public void setQuantidadeMinima(Integer quantidadeMinima) {
+		this.quantidadeMinima = quantidadeMinima;
 	}
 
 	public BigDecimal getPreco() {
