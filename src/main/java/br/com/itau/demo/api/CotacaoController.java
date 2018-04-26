@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.itau.demo.adapter.CotacaoAdapter;
 import br.com.itau.demo.bo.CotacaoBO;
 import br.com.itau.demo.model.Produto;
+import br.com.itau.demo.service.CotacaoService;
 
 @RestController
 @RequestMapping("/api/cotacao")
 public class CotacaoController {
 
 	@Autowired
-	private CotacaoAdapter adapter;
+	private CotacaoService service;
 
 	@PostMapping
 	public  ResponseEntity<CotacaoBO> cotar(@RequestBody List<Produto> produtos, HttpServletResponse response) {
-		CotacaoBO cotacao = adapter.realizarCotacaoDeProdutos(produtos);
+		CotacaoBO cotacao = service.realizarCotacaoDeProdutos(produtos);
 		if (cotacao == null) {
 			return new ResponseEntity<CotacaoBO>(HttpStatus.NO_CONTENT);
 		}

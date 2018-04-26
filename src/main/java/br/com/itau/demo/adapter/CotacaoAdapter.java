@@ -2,11 +2,10 @@ package br.com.itau.demo.adapter;
 
 import java.util.List;
 
-import br.com.itau.demo.bo.CotacaoBO;
-import br.com.itau.demo.model.Produto;
+import br.com.itau.demo.bo.CotacaoPorFornecedorBO;
 
 public interface CotacaoAdapter {
 
-	public CotacaoBO realizarCotacaoDeProdutos(List<Produto> produtosSelecionados);
+	List<CotacaoPorFornecedorBO> buscarCotacaoDeFornecedoresParaProduto(String codigoBarras);
 
 }
