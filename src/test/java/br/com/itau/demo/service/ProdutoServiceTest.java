@@ -16,6 +16,7 @@ import br.com.itau.demo.model.Produto;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ConfigurationTest.class)
+@Sql({ "classpath:limpa_dados.sql" })
 public class ProdutoServiceTest {
 
 	@Autowired
@@ -44,6 +45,7 @@ public class ProdutoServiceTest {
 	}
 
 	@Test
+	@Sql(scripts = "classpath:limpa_dados.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 	@Sql({ "classpath:insert_produtos.sql" })
 	@Sql(scripts = "classpath:limpa_dados.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 	public void deveRetornarProdutoPorCodigoDeBarrasTest() {
