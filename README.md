@@ -59,4 +59,4 @@ Baseado no produto e a quantidade solicitada essa API irá consumir o serviço e
   
 #### Informações importantes a respeito do Serviço Externo de consulta de preços:
 - Caso o projeto esteja sendo executado dentro de uma rede corporativa (com proxy ou bloqueios) é possível que o acesso ao serviço externo não seja permitido.
-- É possível verificar todos os produtos e quantidades disponíveis para cotação com um `GET` em https://demo-prices.herokuapp.com/api/
+- É possível verificar todos os produtos e quantidades disponíveis para cotação com um `GET` em https://demo-prices.herokuapp.com/api/precos
