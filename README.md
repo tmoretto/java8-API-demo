@@ -2,8 +2,8 @@
 
 Projeto demonstração de uma **`API REST`** **`Java 8`** com **`Spring Boot`**.
 A API expõe um endpoint de **`Produtos`**, onde é possível `incluir`, `alterar`, `excluir` e `consultar` (todos ou por código de barras) produtos. 
-A API disponibiliza também um endpoint de **`Cotação`** de produtos. Fora do escopo dessa demonstração, foi construída uma API externa para a consulta de preços de produtos por fornecedor baseado na quantidade mínima solicitada (um mesmo fornecedor pode ter mais de um preço para um mesmo produto, com quantidades mínimas diferentes).
-Baseado no produto e a quantidade solicitada essa API irá consumir o serviço externo e retornar o melhor preço de cada fornecedor.
+A API disponibiliza também um endpoint de **`Cotação`** de produtos. Fora do escopo dessa demonstração, foi construída uma API externa para a consulta de preços de produtos por fornecedor baseado na quantidade solicitada (um mesmo fornecedor pode ter mais de um preço para um mesmo produto, mas com quantidades mínimas diferentes).
+Baseado no produto e a quantidade solicitada, a API irá consumir o serviço externo e retornar o melhor preço de cada fornecedor.
 
 ## Documentação
 ### `Endpoint de Produto`
