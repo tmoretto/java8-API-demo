@@ -10,30 +10,30 @@ Baseado no produto e a quantidade solicitada essa API irá consumir o serviço e
 #### Requests:
 
 - `GET /api/produtos` 
-  - **Retorno**: Lista com todos os produtos cadastrados.
+  - Retorna uma lista com todos os produtos cadastrados.
 - `GET /api/produtos/{codigoBarras}`
-  - **Parametro**: Código de barras do produto a ser `buscado`
-  - **Retorno**: Produto correspondente ao código de barras.
+  - Recebe o código de barras do produto a ser `buscado`
+  - Retorna o produto correspondente ao código de barras.
 - `POST /api/produtos/`
-  - **Parametro**: JSON representando o produto a ser `incluído`. Exemplo:
+  - Recebe um JSON representando o produto a ser `incluído`. Exemplo:
   ```javascript
   {
 	"codigoBarras" : "7896019621755",
 	"nome" : "CHOCOLATE AO LEITE LACTA"
   }
   ```
-  - **Retorno**: Produto incluído.
+  - Retorna o produto incluído.
 - `PUT /api/produtos/`
-  - **Parametro**: JSON representando o produto a ser `atualizado`. Exemplo:
+  - Recebe um JSON representando o produto a ser `atualizado`. Exemplo:
   ```javascript
   {
 	"codigoBarras" : "7896019621755",
 	"nome" : "NOME ALTERADO"
   }
   ```
-  - **Retorno**: Produto atualizado.
+  - Retorna o produto atualizado.
 - `DELETE api/produtos/{codigoBarras}`
-  - **Parametro**: Código de barras do produto a ser `excluído`
+  - Recebe o código de barras do produto a ser `excluído`
 
 
 ### `Endpoint de Cotação`
@@ -41,7 +41,7 @@ Baseado no produto e a quantidade solicitada essa API irá consumir o serviço e
 #### Requests:
 
 - `POST /api/cotacao`
-  - **Parametro**: Lista JSON com o código de barras do produto e quantidade solicitada. Exemplo:
+  - Recebe um JSON com o código de barras do produto e quantidade desejada. Exemplo:
   ```javascript
   [
 	  {
@@ -55,7 +55,7 @@ Baseado no produto e a quantidade solicitada essa API irá consumir o serviço e
 	
   ]
   ```
-  - **Retorno**: Representação da cotação com o menor preço encontrado de cada fornecedor.
+  - Retorna uma representação da cotação com o menor preço encontrado para o produto que atenda a quantidade mínima de cada fornecedor.
   
 #### Informações importantes a respeito do Serviço Externo de consulta de preços:
 - Caso o projeto esteja sendo executado dentro de uma rede corporativa (com proxy ou bloqueios) é possível que o acesso ao serviço externo não seja permitido.
