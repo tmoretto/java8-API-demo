@@ -2,7 +2,7 @@
 
 Projeto demonstração de uma **`API REST`** **`Java 8`** com **`Spring Boot`**.
 A API expõe um endpoint de **`Produtos`**, onde é possível `incluir`, `alterar`, `excluir` e `consultar` (todos ou por código de barras) produtos. 
-A API disponibiliza também um endpoint de **`Cotação`** de produtos. Fora do escopo dessa demonstração, foi construída uma API externa que retorna preços de produtos por fornecedor baseado na quantidade mínima solicitada (um mesmo fornecedor pode ter mais de um preço para um mesmo produto, com quantidades mínimas diferentes).
+A API disponibiliza também um endpoint de **`Cotação`** de produtos. Fora do escopo dessa demonstração, foi construída uma API externa para a consulta de preços de produtos por fornecedor baseado na quantidade mínima solicitada (um mesmo fornecedor pode ter mais de um preço para um mesmo produto, com quantidades mínimas diferentes).
 Baseado no produto e a quantidade solicitada essa API irá consumir o serviço externo e retornar o melhor preço de cada fornecedor.
 
 ## Documentação
@@ -57,6 +57,6 @@ Baseado no produto e a quantidade solicitada essa API irá consumir o serviço e
   ```
   - **Retorno**: Representação da cotação com o menor preço encontrado de cada fornecedor.
   
-#### Informações importantes:
+#### Informações importantes a respeito do Serviço Externo de consulta de preços:
 - Caso o projeto esteja sendo executado dentro de uma rede corporativa (com proxy ou bloqueios) é possível que o acesso ao serviço externo não seja permitido.
-- É possível verificar todos os produtos e quantidades disponíveis para cotação com um `GET` em `https://demo-prices.herokuapp.com/api/`
+- É possível verificar todos os produtos e quantidades disponíveis para cotação com um `GET` em https://demo-prices.herokuapp.com/api/
